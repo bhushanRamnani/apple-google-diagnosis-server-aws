@@ -1,0 +1,7 @@
+.DS_Store*
+.gradle*
+.swagger-codegen*
+Dockerfile*
+.terraform
+*.tfstate*
+/build/
