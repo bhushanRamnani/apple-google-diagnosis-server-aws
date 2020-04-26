@@ -2,19 +2,21 @@ openapi: 3.0.3
 
 info:
   description: An implementation of Diagnosis Server supporting the Apple/Google Contact Tracing protocol
-    hosted on serverless AWS infrastructure. The
+    hosted on serverless AWS infrastructure. The server provides two API methods, one for posting a batch of
+    diagnosis keys and one for retrieval of diagnosis keys reported during a fixed time interval.
   version: 1.0.0
   title: Apple/Google Contact Tracing Diagnosis Server
   license:
     name: MIT License
-    url: https://github.com/Co-Epi/data-models/blob/master/LICENSE
+    url: https://github.com/bhushanRamnani/apple-google-diagnosis-server-aws/blob/master/LICENSE
 
 paths:
   /diagnosiskeys:
     post:
       summary: Submit a list of diagnosis keys corresponding for the current period.
-      description: Submit a list of diagnosis keys corresponding for a given period. The period is set to a time range
-        of [today - 14 days, today]. Diagnosis keys are Daily Tracing keys for the current period.
+      description: Submit a list of diagnosis keys corresponding for a given period. Diadnosis Keys are Daily Tracing
+        Keys generated during the 14 day time period before the infection is reported to the server. The current specification
+        can be found in the Apple/Google protocol definition.
         https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ContactTracing-CryptographySpecification.pdf
 
       requestBody:
@@ -50,7 +52,7 @@ paths:
         name: reportDayNumber
         description: A positive integer corresponding to a specific date when the user reported that they were
           infected to the back-end server. It is calculated as (Number of Seconds since Epoch / 60 * 60 * 24).
-          If not provided, current day number is assumed. Note that this is the day when the infection was reported
+          If not provided, current day number is assumed. NOTE that this is the day when the infection was reported
           and not the day number corresponding to the daily tracing key, i.e. the day when the daily tracing key
           was generated.
         required: false

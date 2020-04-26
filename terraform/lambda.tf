@@ -76,7 +76,8 @@ resource "aws_iam_policy" "ag_lambda_dynamodb_access" {
                     "dynamodb:DescribeTableReplicaAutoScaling"
                 ],
                 "Resource": [
-                    "${aws_dynamodb_table.ag_diagnosis_table.arn}"
+                    "${aws_dynamodb_table.ag_diagnosis_table.arn}",
+                    "${aws_dynamodb_table.ag_diagnosis_table.arn}/index/keyData-index"
                 ]
             },
             {
@@ -89,7 +90,8 @@ resource "aws_iam_policy" "ag_lambda_dynamodb_access" {
                     "dynamodb:ListStreams"
                 ],
                 "Resource": [
-                    "${aws_dynamodb_table.ag_diagnosis_table.arn}"
+                    "${aws_dynamodb_table.ag_diagnosis_table.arn}",
+                    "${aws_dynamodb_table.ag_diagnosis_table.arn}/index/keyData-index"
                 ]
             }
         ]
