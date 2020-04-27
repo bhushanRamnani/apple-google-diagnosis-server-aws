@@ -13,7 +13,9 @@ info:
 paths:
   /diagnosiskeys:
     post:
-      summary: Submit a list of diagnosis keys corresponding for the current period.
+      summary: Submit a list of diagnosis keys with key data and associated day number.
+        Duplicate keys are ignored. This prevents a bad actor from posting the same key to the server with a different
+        dayNumber. Key data should be base64 encoded.
       description: Submit a list of diagnosis keys corresponding for a given period. Diadnosis Keys are Daily Tracing
         Keys generated during the 14 day time period before the infection is reported to the server. The current specification
         can be found in the Apple/Google protocol definition.
